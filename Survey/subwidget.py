@@ -202,11 +202,6 @@ class LCAProcessWidget(QWidget):
         self.setGeometry(300, 300, 300, 600)
         self.show()
         
-        
-        
-    
-    
-
 
 class AnalysisWidget(QWidget):
     def __init__(self, parent):
@@ -236,6 +231,47 @@ class AnalysisWidget(QWidget):
 
         self.setWindowTitle('AnalysisWidget')
         self.setGeometry(300, 300, 300, 150)
+        self.show()
+        
+        # 텍스트 입력 필드 추가
+        material_labels = [
+            "제조 공정에 사용되는 원료:",
+            "재활용에 사용되는 원료:",
+            "폐기에 사용되는 원료:",
+            "제조에 사용되는 전력량:"
+        ]
+        for label in material_labels:
+            material_label = QLabel(label)
+            material_text = QLineEdit()
+            vbox.addWidget(material_label)
+            vbox.addWidget(material_text)
+
+        self.setWindowTitle('AnalysisWidget')
+        self.setGeometry(300, 300, 300, 250)
+        self.show()
+        
+        # 라디오버튼 추가
+        awareness_label = QLabel("평소에 ESG 혹은 LCA에 대해 알고 있었나요?")
+        font = awareness_label.font()
+        font.setBold(True)
+        awareness_label.setFont(font)
+        vbox.addWidget(awareness_label)
+
+        radio_buttons = []
+        options = [
+            "1. 전혀 몰랐다.",
+            "2. 이름만 들어봤다.",
+            "3. 대략적으로 이해를 하고 있다.",
+            "4. 실제로 자주 접하고 있으며 나름 익숙하다.",
+            "5. 전문가다."
+        ]
+        for option in options:
+            button = QRadioButton(option)
+            radio_buttons.append(button)
+            vbox.addWidget(button)
+
+        self.setWindowTitle('AnalysisWidget')
+        self.setGeometry(300, 300, 300, 400)
         self.show()
 
 class ReviewContentWidget(QWidget):
